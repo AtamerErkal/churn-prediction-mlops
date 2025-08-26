@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/churn-prediction-mlops/mlruns/565703094410278156/4b181478cdd742a59b6c3596b2ad2056/artifacts
+end_time: 1756199111250
+entry_point_name: ''
+experiment_id: '565703094410278156'
+lifecycle_stage: active
+run_id: 4b181478cdd742a59b6c3596b2ad2056
+run_name: invincible-conch-402
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756199111164
+status: 4
+tags: []
+user_id: Blue

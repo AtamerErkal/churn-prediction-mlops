@@ -1,0 +1,35 @@
+# params.yaml
+data:
+  raw_path: data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv
+  processed_path: data/processed/processed_data.csv
+  target_col: Churn
+
+processing:
+  binary_cols:
+    - Partner
+    - Dependents
+    - PhoneService
+    - PaperlessBilling
+  categorical_cols:
+    - gender
+    - InternetService
+    - MultipleLines
+    - OnlineSecurity
+    - OnlineBackup
+    - DeviceProtection
+    - TechSupport
+    - StreamingTV
+    - StreamingMovies
+    - Contract
+    - PaymentMethod
+  drop_cols:
+    - customerID
+
+training:
+  test_size: 0.2
+  random_state: 42
+  model_name: logistic_regression_model
+  # Logistic Regression model parameters
+  model_params:
+    C: 1.0
+    solver: 'liblinear'

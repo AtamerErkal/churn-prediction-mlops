@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/churn-prediction-mlops/mlruns/565703094410278156/fc498cc3966e40ba92d27c107e1dbe67/artifacts
+end_time: 1756199354627
+entry_point_name: ''
+experiment_id: '565703094410278156'
+lifecycle_stage: active
+run_id: fc498cc3966e40ba92d27c107e1dbe67
+run_name: incongruous-pug-482
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756199348421
+status: 3
+tags: []
+user_id: Blue
