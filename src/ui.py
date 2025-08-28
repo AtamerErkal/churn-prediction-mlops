@@ -6,7 +6,7 @@ import json
 st.title("Customer Churn Prediction")
 st.write("Enter customer details to predict if they will churn.")
 
-# Create input fields for the user - UPDATED
+# Create input fields for the user
 tenure = st.slider("Tenure (months)", 0, 72, 12)
 monthly_charges = st.number_input("Monthly Charges", min_value=0.0, max_value=200.0, value=50.0)
 total_charges = st.number_input("Total Charges", min_value=0.0, max_value=10000.0, value=1000.0)
@@ -29,16 +29,15 @@ payment_method = st.selectbox("Payment Method", ["Electronic check", "Mailed che
 
 
 if st.button("Predict Churn"):
-    # Convert user-friendly inputs to the one-hot encoded format for the API - UPDATED
     api_input = {
         "tenure": tenure, "MonthlyCharges": monthly_charges, "TotalCharges": total_charges,
-        "SeniorCitizen": 1 if senior_citizen == "Yes" else 0, # <--- GÜNCELLENDİ
+        "SeniorCitizen": 1 if senior_citizen == "Yes" else 0,
         "Partner": 1 if partner == "Yes" else 0,
         "Dependents": 1 if dependents == "Yes" else 0,
         "PhoneService": 1 if phone_service == "Yes" else 0,
         "PaperlessBilling": 1 if paperless_billing == "Yes" else 0,
         "gender_Male": 1 if gender == "Male" else 0,
-        "InternetService_Fiber_optic": 0, "InternetService_No": 0, # <--- GÜNCELLENDİ
+        "InternetService_Fiber_optic": 0, "InternetService_No": 0,
         "MultipleLines_No_phone_service": 0, "MultipleLines_Yes": 0,
         "OnlineSecurity_No_internet_service": 0, "OnlineSecurity_Yes": 0,
         "OnlineBackup_No_internet_service": 0, "OnlineBackup_Yes": 0,
@@ -51,8 +50,7 @@ if st.button("Predict Churn"):
         "PaymentMethod_Electronic_check": 0,
         "PaymentMethod_Mailed_check": 0
     }
-
-    # Set the correct one-hot encoded fields to 1 based on selection - UPDATED
+    
     if internet_service == "Fiber optic": api_input["InternetService_Fiber_optic"] = 1
     elif internet_service == "No": api_input["InternetService_No"] = 1
 
@@ -84,7 +82,6 @@ if st.button("Predict Churn"):
     elif payment_method == "Mailed check": api_input["PaymentMethod_Mailed_check"] = 1
     elif payment_method == "Credit card (automatic)": api_input["PaymentMethod_Credit_card_automatic"] = 1
 
-    # Send a request to the FastAPI
     api_url = "http://127.0.0.1:8000/predict"
     try:
         response = requests.post(api_url, data=json.dumps(api_input))

@@ -24,8 +24,8 @@ class CustomerData(BaseModel):
     PhoneService: int
     PaperlessBilling: int
     gender_Male: int
-    InternetService_Fiber_optic: int # <--- YENİ EKLENDİ
-    InternetService_No: int # <--- YENİ EKLENDİ
+    InternetService_Fiber_optic: int
+    InternetService_No: int
     MultipleLines_No_phone_service: int
     MultipleLines_Yes: int
     OnlineSecurity_No_internet_service: int
@@ -50,7 +50,7 @@ class CustomerData(BaseModel):
 app = FastAPI(title="Customer Churn Prediction API", version="1.0")
 
 # Load the trained model from MLflow
-RUN_ID = "a5391ea3bb7f4dac9fc5200882ff25d2"
+RUN_ID = "2e75a1a78ab94393a9bb980e98ca1540"
 MODEL_NAME = "logistic_regression_model"
 logged_model_uri = f'runs:/{RUN_ID}/{MODEL_NAME}'
 model = mlflow.pyfunc.load_model(logged_model_uri)

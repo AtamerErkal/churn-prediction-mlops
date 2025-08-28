@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/churn-prediction-mlops/mlruns/565703094410278156/2e75a1a78ab94393a9bb980e98ca1540/artifacts
+end_time: 1756371462932
+entry_point_name: ''
+experiment_id: '565703094410278156'
+lifecycle_stage: active
+run_id: 2e75a1a78ab94393a9bb980e98ca1540
+run_name: nimble-crane-61
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756371457807
+status: 3
+tags: []
+user_id: Blue

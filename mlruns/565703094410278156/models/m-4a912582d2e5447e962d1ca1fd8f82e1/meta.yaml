@@ -1,0 +1,10 @@
+artifact_location: file:///C:/churn-prediction-mlops/mlruns/565703094410278156/models/m-4a912582d2e5447e962d1ca1fd8f82e1/artifacts
+creation_timestamp: 1756371458001
+experiment_id: '565703094410278156'
+last_updated_timestamp: 1756371462911
+model_id: m-4a912582d2e5447e962d1ca1fd8f82e1
+model_type: null
+name: logistic_regression_model
+source_run_id: 2e75a1a78ab94393a9bb980e98ca1540
+status: 2
+status_message: null

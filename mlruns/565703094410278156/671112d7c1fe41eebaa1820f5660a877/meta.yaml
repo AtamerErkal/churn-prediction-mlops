@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/churn-prediction-mlops/mlruns/565703094410278156/671112d7c1fe41eebaa1820f5660a877/artifacts
+end_time: 1756370866370
+entry_point_name: ''
+experiment_id: '565703094410278156'
+lifecycle_stage: active
+run_id: 671112d7c1fe41eebaa1820f5660a877
+run_name: flawless-perch-583
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756370859067
+status: 3
+tags: []
+user_id: Blue
