@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/churn-prediction-mlops/mlruns/565703094410278156/a5391ea3bb7f4dac9fc5200882ff25d2/artifacts
+end_time: 1756281406792
+entry_point_name: ''
+experiment_id: '565703094410278156'
+lifecycle_stage: active
+run_id: a5391ea3bb7f4dac9fc5200882ff25d2
+run_name: inquisitive-crab-301
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756281401294
+status: 3
+tags: []
+user_id: Blue

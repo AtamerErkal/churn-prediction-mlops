@@ -68,7 +68,7 @@ def train_model(config_path):
         # Log the model to MLflow
         mlflow.sklearn.log_model(model, config['training']['model_name'])
         print("Model saved successfully.")
-
+        
         # Print the run ID to make it easy to find
         print(f"MLflow Run ID: {run.info.run_id}")
 

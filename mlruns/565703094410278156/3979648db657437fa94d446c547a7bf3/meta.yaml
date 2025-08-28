@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/churn-prediction-mlops/mlruns/565703094410278156/3979648db657437fa94d446c547a7bf3/artifacts
+end_time: 1756223140386
+entry_point_name: ''
+experiment_id: '565703094410278156'
+lifecycle_stage: active
+run_id: 3979648db657437fa94d446c547a7bf3
+run_name: aged-vole-570
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756223132112
+status: 3
+tags: []
+user_id: Blue

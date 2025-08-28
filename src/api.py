@@ -4,9 +4,18 @@ import mlflow
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-# Define the input data schema using Pydantic
-# These features must match the columns of the training data AFTER processing
+try:
+    PROCESSED_DATA_PATH = "data/processed/processed_data.csv"
+    df_processed = pd.read_csv(PROCESSED_DATA_PATH)
+    TRAINING_COLUMNS = df_processed.drop(columns=["Churn"]).columns.tolist()
+except FileNotFoundError:
+    print(f"Error: Processed data file not found at {PROCESSED_DATA_PATH}")
+    TRAINING_COLUMNS = []
+
+
+# Define the input data schema using Pydantic - UPDATED
 class CustomerData(BaseModel):
+    SeniorCitizen: int  # <--- YENİ EKLENDİ
     tenure: int
     MonthlyCharges: float
     TotalCharges: float
@@ -15,6 +24,8 @@ class CustomerData(BaseModel):
     PhoneService: int
     PaperlessBilling: int
     gender_Male: int
+    InternetService_Fiber_optic: int # <--- YENİ EKLENDİ
+    InternetService_No: int # <--- YENİ EKLENDİ
     MultipleLines_No_phone_service: int
     MultipleLines_Yes: int
     OnlineSecurity_No_internet_service: int
@@ -39,36 +50,32 @@ class CustomerData(BaseModel):
 app = FastAPI(title="Customer Churn Prediction API", version="1.0")
 
 # Load the trained model from MLflow
-# IMPORTANT: Replace <RUN_ID> with the actual Run ID from your MLflow experiment
-RUN_ID = "fc498cc3966e40ba92d27c107e1dbe67" # Example: "a1b2c3d4e5f6..."
+RUN_ID = "a5391ea3bb7f4dac9fc5200882ff25d2"
 MODEL_NAME = "logistic_regression_model"
 logged_model_uri = f'runs:/{RUN_ID}/{MODEL_NAME}'
 model = mlflow.pyfunc.load_model(logged_model_uri)
 print("Model loaded successfully.")
 
+
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the Churn Prediction API"}
 
+
 @app.post("/predict")
 def predict_churn(customer_data: CustomerData):
-    """
-    Takes customer data as input and returns churn prediction.
-    """
-    # Convert the Pydantic model to a dictionary
+    if not TRAINING_COLUMNS:
+         return {"error": "Model training columns not loaded. API is not ready."}
+         
     data_dict = customer_data.dict()
-
-    # Convert the dictionary to a pandas DataFrame
-    # The model expects a DataFrame as input
     input_df = pd.DataFrame([data_dict])
-
-    # Make a prediction
+    
+    # Reorder columns to match the training data order
+    input_df = input_df[TRAINING_COLUMNS]
+    
     prediction = model.predict(input_df)
-
-    # The output of predict is a numpy array, get the first element
     churn_result = int(prediction[0])
-
-    # Return the result
+    
     return {
         "prediction": churn_result,
         "prediction_label": "Churn" if churn_result == 1 else "No Churn"
